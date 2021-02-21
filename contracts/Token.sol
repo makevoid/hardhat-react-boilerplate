@@ -1,5 +1,4 @@
 //SPDX-License-Identifier: Unlicense
-// Add Solidity compiler 0.6.2 to you hardhat.config.ts
 pragma solidity ^0.6.2;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";

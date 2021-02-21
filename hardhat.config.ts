@@ -50,7 +50,25 @@ const config: HardhatUserConfig = {
         version: "0.7.3",
         settings: {
           optimizer: {
-            enabled: true,
+            enabled: false,
+            runs: 50,
+          },
+        },
+      },
+      {
+        version: "0.6.0",
+        settings: {
+          optimizer: {
+            enabled: false,
+            runs: 50,
+          },
+        },
+      },
+      {
+        version: "0.6.2",
+        settings: {
+          optimizer: {
+            enabled: false,
             runs: 50,
           },
         },

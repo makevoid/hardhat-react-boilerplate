@@ -5,6 +5,7 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Symfoni } from "./hardhat/SymfoniContext";
 import { Greeter } from './components/Greeter';
 import { Greeter2 } from './components/Greeter2';
+import { Token } from './components/Token';
 import { Section, Container, Hero, Heading } from 'react-bulma-components';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           </Heading>
           <Greeter></Greeter>
           <Greeter2></Greeter2>
+          <Token></Token>
         </Section>
       </Symfoni>
     </Container>
