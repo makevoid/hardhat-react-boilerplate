@@ -1,4 +1,4 @@
-# Trying HardHat React
+# hardhat-react-boilerplate + Token
 
 this is a fork of
 https://github.com/symfoni/hardhat-react-boilerplate.git
