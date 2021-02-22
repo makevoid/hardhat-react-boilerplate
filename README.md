@@ -1,3 +1,35 @@
+# Trying HardHat React
+
+this is a fork of
+https://github.com/symfoni/hardhat-react-boilerplate.git
+
+In this repo I implemented some changes as I'm playing with the setup, backend pipeline (runs a truffle/ganache-like server, compiles and deploys the contract automatically)
+
+### Changes:
+
+- Enabled Token contract
+- Added a basic UI to this repo (using Bulma.io CSS microframework)
+
+
+### WIP
+
+Adding ERC20 transfers and info (checkBalance()) as UI elements
+
+- implement `balanceOf()` (done)
+- implement `transfer()` method
+
+
+### Enjoy
+
+@makevoid
+
+
+---
+
+### original readme
+
+-----
+
 # Get started
 
 1. Clone the repo and cd into it `git clone https://github.com/symfoni/hardhat-react-boilerplate.git MyProject && cd MyProject`
