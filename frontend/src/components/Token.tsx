@@ -1,34 +1,39 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { TokenContext } from "./../hardhat/SymfoniContext";
-import { Button, Columns, Column } from 'react-bulma-components';
+import React, { useContext, useEffect, useState } from 'react'
+import { TokenContext } from "./../hardhat/SymfoniContext"
+import { Button, Columns, Column } from 'react-bulma-components'
 
 interface Props { }
 
 export const Token: React.FC<Props> = () => {
   const token = useContext(TokenContext)
-  const [name, setName] = useState("");
-  const [balanceAddress, setBalanceAddress] = useState("");
-  const [addressBalance, setAddressBalance] = useState("");
+  const [name, setName] = useState("")
+  const [message, setMessage] = useState("")
+  const [recipientAddress, setRecipientAddress] = useState("")
+  const [amount, setAmount] = useState("")
+
   useEffect(() => {
     const doAsync = async () => {
       if (!token.instance) return
       console.log("Token is deployed at ", token.instance.address)
       setName(await token.instance.name())
       // setMessage(lastTx) TODO: finish
-    };
-    doAsync();
+    }
+    doAsync()
   }, [token])
 
-  const balanceAddressEntered = (evt) =>
-    setBalanceAddress(evt.target.value)
+  const amountEntered = (evt) =>
+    setAmount(evt.target.value)
 
-  const checkBalance = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const recipientAddressEntered = (evt) =>
+    setRecipientAddress(evt.target.value)
+
+  const tokenTransfer = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     if (!token.instance) throw Error("Token instance not ready")
     if (token.instance) {
-      const balance = await token.instance.balanceOf(balanceAddress)
-      console.log("balance:", balance)
-      setAddressBalance(balance.toString())
+      const message = await token.instance.transfer(recipientAddress, amount)
+      console.log("message:", message) // TODO:
+      setMessage(message.toString())
     }
   }
 
@@ -37,14 +42,17 @@ export const Token: React.FC<Props> = () => {
       <p>token: {name}</p>
 
       <div className="s20"></div>
-      <p>send transaction:</p>
+      <p>send transaction (amount, recipient):</p>
       <Columns>
         <Columns.Column size={3}>
-          <input className="input" onChange={balanceAddressEntered} />
+          <input className="input" placeholder="0.01234 ETH" onChange={amountEntered} />
+        </Columns.Column>
+        <Columns.Column size={3}>
+          <input className="input" placeholder="0x1234567890abcdef123456789abcdef1" onChange={recipientAddressEntered} />
         </Columns.Column>
         <Columns.Column size={1}>
-          <Button color="primary" onClick={checkBalance}>
-            Check
+          <Button color="primary" onClick={tokenTransfer}>
+            Send
           </Button>
         </Columns.Column>
       </Columns>

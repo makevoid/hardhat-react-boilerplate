@@ -1,24 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { TokenContext } from "./../hardhat/SymfoniContext";
-import { Button, Columns, Column } from 'react-bulma-components';
+import React, { useContext, useEffect, useState } from 'react'
+import { TokenContext } from "./../hardhat/SymfoniContext"
+import { Button, Columns, Column } from 'react-bulma-components'
 
 interface Props { }
 
 export const TokenBalanceCheck: React.FC<Props> = () => {
   const token = useContext(TokenContext)
   console.log(token)
-  const [totalSupply, setTotalSupply] = useState("");
-  const [name, setName] = useState("");
-  const [balanceAddress, setBalanceAddress] = useState("");
-  const [addressBalance, setAddressBalance] = useState("");
+  const [totalSupply, setTotalSupply] = useState("")
+  const [name, setName] = useState("")
+  const [balanceAddress, setBalanceAddress] = useState("")
+  const [addressBalance, setAddressBalance] = useState("")
   useEffect(() => {
     const doAsync = async () => {
       if (!token.instance) return
       console.log("Token is deployed at ", token.instance.address)
       setName(await token.instance.name())
       setTotalSupply((await token.instance.totalSupply()).toString())
-    };
-    doAsync();
+    }
+    doAsync()
   }, [token])
 
   const balanceAddressEntered = (evt) =>

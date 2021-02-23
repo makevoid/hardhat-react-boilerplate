@@ -1,13 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Symfoni } from "./hardhat/SymfoniContext";
-import { Greeter } from './components/Greeter';
-import { GreeterLabel } from './components/GreeterLabel';
-import { TokenBalanceCheck } from './components/TokenBalanceCheck';
-import { Token } from './components/Token';
-import { Section, Container, Hero, Heading } from 'react-bulma-components';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import 'react-bulma-components/dist/react-bulma-components.min.css'
+import { Symfoni } from "./hardhat/SymfoniContext"
+import { Greeter } from './components/Greeter'
+import { GreeterLabel } from './components/GreeterLabel'
+import { TokenBalanceCheck } from './components/TokenBalanceCheck'
+import { Token } from './components/Token'
+import { Section, Container, Hero, Heading } from 'react-bulma-components'
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
         <Hero.Body>
           <Container>
             <Heading>
-              Eth App
+              ETH App React Components
             </Heading>
           </Container>
         </Hero.Body>
@@ -41,10 +41,14 @@ function App() {
           <Heading size={4}>TokenBalanceCheck:</Heading>
           <TokenBalanceCheck />
           <div className="s30" />
+
+          <Heading size={4}>Token:</Heading>
+          <Token />
+          <div className="s30" />
         </Section>
       </Symfoni>
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App
