@@ -4,7 +4,8 @@ import './App.css';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Symfoni } from "./hardhat/SymfoniContext";
 import { Greeter } from './components/Greeter';
-import { Greeter2 } from './components/Greeter2';
+import { GreeterLabel } from './components/GreeterLabel';
+import { TokenBalanceCheck } from './components/TokenBalanceCheck';
 import { Token } from './components/Token';
 import { Section, Container, Hero, Heading } from 'react-bulma-components';
 
@@ -24,12 +25,22 @@ function App() {
 
       <Symfoni autoInit={true} >
         <Section>
-          <Heading size={4}>
-            Greeter:
-          </Heading>
-          <Greeter></Greeter>
-          <Greeter2></Greeter2>
-          <Token></Token>
+          <Heading size={4}>Greeter:</Heading>
+          <Greeter />
+          <div className="s30" />
+
+          <Heading size={4}>GreeterLabel:</Heading>
+          <GreeterLabel />
+          <div className="s30" />
+
+
+          <Heading size={4}>Address:</Heading>
+          0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+          <div className="s30" />
+
+          <Heading size={4}>TokenBalanceCheck:</Heading>
+          <TokenBalanceCheck />
+          <div className="s30" />
         </Section>
       </Symfoni>
     </Container>

@@ -4,8 +4,10 @@ import { Button, Columns, Column } from 'react-bulma-components';
 
 interface Props { }
 
-export const Token: React.FC<Props> = () => {
+export const TokenBalanceCheck: React.FC<Props> = () => {
   const token = useContext(TokenContext)
+  console.log(token)
+  const [totalSupply, setTotalSupply] = useState("");
   const [name, setName] = useState("");
   const [balanceAddress, setBalanceAddress] = useState("");
   const [addressBalance, setAddressBalance] = useState("");
@@ -14,7 +16,7 @@ export const Token: React.FC<Props> = () => {
       if (!token.instance) return
       console.log("Token is deployed at ", token.instance.address)
       setName(await token.instance.name())
-      // setMessage(lastTx) TODO: finish
+      setTotalSupply((await token.instance.totalSupply()).toString())
     };
     doAsync();
   }, [token])
@@ -35,9 +37,10 @@ export const Token: React.FC<Props> = () => {
   return (
     <div>
       <p>token: {name}</p>
+      <p>supply: {totalSupply}</p>
 
       <div className="s20"></div>
-      <p>send transaction:</p>
+      <p>check balance:</p>
       <Columns>
         <Columns.Column size={3}>
           <input className="input" onChange={balanceAddressEntered} />
@@ -50,6 +53,7 @@ export const Token: React.FC<Props> = () => {
       </Columns>
       <div className="s20"></div>
 
+      <p>addressBalance: {addressBalance}</p>
     </div>
   )
 }
